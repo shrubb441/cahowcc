@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job - Bermuda Freelance Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🇧🇲</span>
+                <span>Bermuda Freelance</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Find Jobs</a></li>
+                <li><a href="services.html">Find Services</a></li>
+                <li><a href="post-job.html" class="active">Post a Job</a></li>
+                <li><a href="post-service.html">Offer Service</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Post a Job</h2>
+            <p style="text-align: center; color: var(--gray-light); margin-bottom: 2rem;">
+                Find the perfect freelancer or company for your project
+            </p>
+
+            <div id="message" class="message"></div>
+
+            <form id="job-form">
+                <div class="form-group">
+                    <label for="title">Job Title <span class="required">*</span></label>
+                    <input type="text" id="title" name="title" required placeholder="e.g., Website Development for Small Business">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category <span class="required">*</span></label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="mobile-development">Mobile Development</option>
+                        <option value="design">Design & Creative</option>
+                        <option value="writing">Writing & Content</option>
+                        <option value="marketing">Marketing & SEO</option>
+                        <option value="consulting">Business & Consulting</option>
+                        <option value="accounting">Accounting & Finance</option>
+                        <option value="legal">Legal Services</option>
+                        <option value="construction">Construction & Trades</option>
+                        <option value="photography">Photography & Video</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Job Description <span class="required">*</span></label>
+                    <textarea id="description" name="description" required placeholder="Describe your project, requirements, deliverables, timeline, etc."></textarea>
+                    <span class="form-hint">Be specific about what you need to attract the right talent</span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="budget_min">Budget (Min)</label>
+                        <input type="number" id="budget_min" name="budget_min" min="0" placeholder="e.g., 1000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget_max">Budget (Max)</label>
+                        <input type="number" id="budget_max" name="budget_max" min="0" placeholder="e.g., 5000">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget_type">Budget Type</label>
+                    <select id="budget_type" name="budget_type">
+                        <option value="fixed">Fixed Price</option>
+                        <option value="hourly">Hourly Rate</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Project Duration</label>
+                    <input type="text" id="duration" name="duration" placeholder="e.g., 2-3 weeks, 1 month, Ongoing">
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" value="Bermuda" placeholder="Bermuda">
+                    <span class="form-hint">Specify if remote work is acceptable or if in-person is required</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills_required">Skills Required</label>
+                    <input type="text" id="skills_required" name="skills_required" placeholder="e.g., HTML, CSS, JavaScript, React">
+                    <span class="form-hint">Comma-separated list of skills</span>
+                </div>
+
+                <hr style="border: 1px solid var(--navy-lighter); margin: 2rem 0;">
+
+                <h3 style="color: var(--yellow-rich); margin-bottom: 1rem;">Contact Information</h3>
+
+                <div class="form-group">
+                    <label for="client_name">Your Name <span class="required">*</span></label>
+                    <input type="text" id="client_name" name="client_name" required placeholder="Full name or company name">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="client_email">Email <span class="required">*</span></label>
+                        <input type="email" id="client_email" name="client_email" required placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="client_phone">Phone Number</label>
+                        <input type="tel" id="client_phone" name="client_phone" placeholder="+1 441-xxx-xxxx">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                    Post Job
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Bermuda Freelance Marketplace. Connecting Bermuda's talent and businesses.</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('job-form');
+        const messageDiv = document.getElementById('message');
+
+        function showMessage(text, type) {
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type} show`;
+            setTimeout(() => {
+                messageDiv.classList.remove('show');
+            }, 5000);
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const data = {};
+
+            formData.forEach((value, key) => {
+                // Convert numeric fields
+                if (key === 'budget_min' || key === 'budget_max') {
+                    data[key] = value ? parseInt(value) : null;
+                } else {
+                    data[key] = value || null;
+                }
+            });
+
+            // Validate budget
+            if (data.budget_min && data.budget_max && data.budget_min > data.budget_max) {
+                showMessage('Minimum budget cannot be greater than maximum budget', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/jobs', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    showMessage('Job posted successfully! Redirecting to jobs page...', 'success');
+                    form.reset();
+                    setTimeout(() => {
+                        window.location.href = 'jobs.html';
+                    }, 2000);
+                } else {
+                    showMessage(result.error || 'Failed to post job. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('An error occurred. Please try again later.', 'error');
+            }
+        });
+    </script>
+</body>
+</html>

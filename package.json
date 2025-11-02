@@ -1,0 +1,14 @@
+{
+  "name": "bermuda-freelance-marketplace",
+  "version": "1.0.0",
+  "description": "Bermuda Freelance Marketplace - Connect clients with local freelancers and companies",
+  "scripts": {
+    "dev": "wrangler pages dev public --binding DB=bermuda_db",
+    "deploy": "wrangler pages deploy public",
+    "db:init": "wrangler d1 execute bermuda_db --file=./schema.sql",
+    "db:local": "wrangler d1 execute bermuda_db --local --file=./schema.sql"
+  },
+  "keywords": ["bermuda", "freelance", "marketplace"],
+  "author": "",
+  "license": "MIT"
+}

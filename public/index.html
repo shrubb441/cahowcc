@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bermuda Freelance Marketplace - Connect with Local Talent</title>
+    <meta name="description" content="Connect Bermuda's best freelancers and companies with clients. Post jobs or find talented professionals right here in Bermuda.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🇧🇲</span>
+                <span>Bermuda Freelance</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="jobs.html">Find Jobs</a></li>
+                <li><a href="services.html">Find Services</a></li>
+                <li><a href="post-job.html">Post a Job</a></li>
+                <li><a href="post-service.html">Offer Service</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Connect with Bermuda's Best Talent</h1>
+            <p>The premier marketplace for freelancers, companies, and clients in Bermuda</p>
+            <div class="cta-buttons">
+                <a href="jobs.html" class="btn btn-primary">Find Jobs</a>
+                <a href="services.html" class="btn btn-primary">Find Services</a>
+                <a href="post-job.html" class="btn btn-secondary">Post a Job</a>
+                <a href="post-service.html" class="btn btn-secondary">Offer Your Services</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="stats">
+            <div class="stat-card">
+                <h3 id="jobs-count">-</h3>
+                <p>Active Jobs</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="services-count">-</h3>
+                <p>Available Services</p>
+            </div>
+            <div class="stat-card">
+                <h3>100%</h3>
+                <p>Bermuda Focused</p>
+            </div>
+        </section>
+
+        <section style="margin: 4rem 0;">
+            <h2 style="text-align: center; color: var(--yellow-rich); margin-bottom: 3rem;">How It Works</h2>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <h3 style="font-size: 3rem;">1️⃣</h3>
+                    <h4 style="color: var(--yellow-rich); margin: 1rem 0;">Post or Browse</h4>
+                    <p>Clients post jobs they need done. Freelancers and companies post their services.</p>
+                </div>
+                <div class="stat-card">
+                    <h3 style="font-size: 3rem;">2️⃣</h3>
+                    <h4 style="color: var(--yellow-rich); margin: 1rem 0;">Connect</h4>
+                    <p>Browse listings, find the perfect match, and reach out directly via email or phone.</p>
+                </div>
+                <div class="stat-card">
+                    <h3 style="font-size: 3rem;">3️⃣</h3>
+                    <h4 style="color: var(--yellow-rich); margin: 1rem 0;">Collaborate</h4>
+                    <p>Work together, negotiate terms, and get the job done - all locally in Bermuda.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin: 4rem 0;">
+            <h2 style="text-align: center; color: var(--yellow-rich); margin-bottom: 2rem;">Featured Categories</h2>
+
+            <div class="cards-grid">
+                <div class="card" onclick="window.location.href='jobs.html?category=web-development'">
+                    <div class="card-title">💻 Web Development</div>
+                    <p class="card-description">Websites, web apps, e-commerce, and more</p>
+                </div>
+                <div class="card" onclick="window.location.href='jobs.html?category=design'">
+                    <div class="card-title">🎨 Design & Creative</div>
+                    <p class="card-description">Graphic design, branding, UI/UX, and creative services</p>
+                </div>
+                <div class="card" onclick="window.location.href='jobs.html?category=marketing'">
+                    <div class="card-title">📱 Marketing</div>
+                    <p class="card-description">Digital marketing, social media, SEO, and content</p>
+                </div>
+                <div class="card" onclick="window.location.href='jobs.html?category=writing'">
+                    <div class="card-title">✍️ Writing & Content</div>
+                    <p class="card-description">Content writing, copywriting, editing, and translation</p>
+                </div>
+                <div class="card" onclick="window.location.href='jobs.html?category=consulting'">
+                    <div class="card-title">💼 Business & Consulting</div>
+                    <p class="card-description">Business consulting, financial advice, and strategy</p>
+                </div>
+                <div class="card" onclick="window.location.href='jobs.html?category=other'">
+                    <div class="card-title">🔧 Other Services</div>
+                    <p class="card-description">Photography, video, construction, and more</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Bermuda Freelance Marketplace. Connecting Bermuda's talent and businesses.</p>
+    </footer>
+
+    <script>
+        // Load stats
+        async function loadStats() {
+            try {
+                const [jobsRes, servicesRes] = await Promise.all([
+                    fetch('/api/jobs'),
+                    fetch('/api/services?availability=all')
+                ]);
+
+                const jobs = await jobsRes.json();
+                const services = await servicesRes.json();
+
+                document.getElementById('jobs-count').textContent = jobs.length;
+                document.getElementById('services-count').textContent = services.length;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                document.getElementById('jobs-count').textContent = '0';
+                document.getElementById('services-count').textContent = '0';
+            }
+        }
+
+        loadStats();
+    </script>
+</body>
+</html>

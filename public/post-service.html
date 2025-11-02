@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer Your Service - Bermuda Freelance Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🇧🇲</span>
+                <span>Bermuda Freelance</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Find Jobs</a></li>
+                <li><a href="services.html">Find Services</a></li>
+                <li><a href="post-job.html">Post a Job</a></li>
+                <li><a href="post-service.html" class="active">Offer Service</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Offer Your Service</h2>
+            <p style="text-align: center; color: var(--gray-light); margin-bottom: 2rem;">
+                Showcase your skills and connect with clients in Bermuda
+            </p>
+
+            <div id="message" class="message"></div>
+
+            <form id="service-form">
+                <div class="form-group">
+                    <label for="title">Service Title <span class="required">*</span></label>
+                    <input type="text" id="title" name="title" required placeholder="e.g., Professional Web Development Services">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category <span class="required">*</span></label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="mobile-development">Mobile Development</option>
+                        <option value="design">Design & Creative</option>
+                        <option value="writing">Writing & Content</option>
+                        <option value="marketing">Marketing & SEO</option>
+                        <option value="consulting">Business & Consulting</option>
+                        <option value="accounting">Accounting & Finance</option>
+                        <option value="legal">Legal Services</option>
+                        <option value="construction">Construction & Trades</option>
+                        <option value="photography">Photography & Video</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Service Description <span class="required">*</span></label>
+                    <textarea id="description" name="description" required placeholder="Describe your service, expertise, what you offer, and what makes you unique..."></textarea>
+                    <span class="form-hint">Highlight your experience, specializations, and what clients can expect</span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="price_min">Starting Price</label>
+                        <input type="number" id="price_min" name="price_min" min="0" placeholder="e.g., 50">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price_max">Maximum Price</label>
+                        <input type="number" id="price_max" name="price_max" min="0" placeholder="e.g., 150">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="price_type">Pricing Type</label>
+                    <select id="price_type" name="price_type">
+                        <option value="project">Per Project</option>
+                        <option value="hourly">Per Hour</option>
+                        <option value="daily">Per Day</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Skills & Expertise</label>
+                    <input type="text" id="skills" name="skills" placeholder="e.g., React, Node.js, MongoDB, API Development">
+                    <span class="form-hint">Comma-separated list of your skills</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="years_experience">Years of Experience</label>
+                    <input type="number" id="years_experience" name="years_experience" min="0" max="50" placeholder="e.g., 5">
+                </div>
+
+                <div class="form-group">
+                    <label for="portfolio_links">Portfolio Links</label>
+                    <textarea id="portfolio_links" name="portfolio_links" rows="3" placeholder="https://yourwebsite.com&#10;https://github.com/yourusername&#10;https://dribbble.com/yourusername"></textarea>
+                    <span class="form-hint">One link per line (websites, GitHub, portfolio sites, etc.)</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="availability">Availability <span class="required">*</span></label>
+                    <select id="availability" name="availability" required>
+                        <option value="available">Available Now</option>
+                        <option value="limited">Limited Availability</option>
+                        <option value="unavailable">Currently Unavailable</option>
+                    </select>
+                </div>
+
+                <hr style="border: 1px solid var(--navy-lighter); margin: 2rem 0;">
+
+                <h3 style="color: var(--yellow-rich); margin-bottom: 1rem;">Contact Information</h3>
+
+                <div class="form-group">
+                    <label for="provider_name">Your Name <span class="required">*</span></label>
+                    <input type="text" id="provider_name" name="provider_name" required placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="company_name">Company Name (if applicable)</label>
+                    <input type="text" id="company_name" name="company_name" placeholder="Your company or business name">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="provider_email">Email <span class="required">*</span></label>
+                        <input type="email" id="provider_email" name="provider_email" required placeholder="your@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="provider_phone">Phone Number</label>
+                        <input type="tel" id="provider_phone" name="provider_phone" placeholder="+1 441-xxx-xxxx">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="website">Website</label>
+                    <input type="url" id="website" name="website" placeholder="https://yourwebsite.com">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                    List My Service
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Bermuda Freelance Marketplace. Connecting Bermuda's talent and businesses.</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('service-form');
+        const messageDiv = document.getElementById('message');
+
+        function showMessage(text, type) {
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type} show`;
+            setTimeout(() => {
+                messageDiv.classList.remove('show');
+            }, 5000);
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const data = {};
+
+            formData.forEach((value, key) => {
+                // Convert numeric fields
+                if (key === 'price_min' || key === 'price_max' || key === 'years_experience') {
+                    data[key] = value ? parseInt(value) : null;
+                } else {
+                    data[key] = value || null;
+                }
+            });
+
+            // Validate pricing
+            if (data.price_min && data.price_max && data.price_min > data.price_max) {
+                showMessage('Starting price cannot be greater than maximum price', 'error');
+                return;
+            }
+
+            // Clean up portfolio links (convert textarea to comma-separated)
+            if (data.portfolio_links) {
+                data.portfolio_links = data.portfolio_links
+                    .split('\n')
+                    .map(link => link.trim())
+                    .filter(link => link.length > 0)
+                    .join(',');
+            }
+
+            try {
+                const response = await fetch('/api/services', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    showMessage('Service posted successfully! Redirecting to services page...', 'success');
+                    form.reset();
+                    setTimeout(() => {
+                        window.location.href = 'services.html';
+                    }, 2000);
+                } else {
+                    showMessage(result.error || 'Failed to post service. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('An error occurred. Please try again later.', 'error');
+            }
+        });
+    </script>
+</body>
+</html>
