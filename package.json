@@ -8,7 +8,14 @@
     "db:init": "wrangler d1 execute bermuda_db --file=./schema.sql",
     "db:local": "wrangler d1 execute bermuda_db --local --file=./schema.sql"
   },
-  "keywords": ["bermuda", "freelance", "marketplace"],
+  "keywords": [
+    "bermuda",
+    "freelance",
+    "marketplace"
+  ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^4.45.3"
+  }
 }
